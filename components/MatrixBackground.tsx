@@ -6,47 +6,49 @@ export default function MatrixBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const canvasElement = canvasRef.current;
+    if (!canvasElement) return;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const context = canvasElement.getContext("2d");
+    if (!context) return;
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvasElement.width = window.innerWidth;
+    canvasElement.height = window.innerHeight;
 
-    const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?";
+    const chars =
+      "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+-=[]{}|;:,.<>?";
     const fontSize = 14;
-    const columns = Math.floor(canvas.width / fontSize);
-    const drops: number[] = [];
+    const columns = Math.floor(canvasElement.width / fontSize);
+    const drops = Array(columns).fill(1);
 
-    for (let i = 0; i < columns; i++) {
-      drops[i] = 1;
-    }
+    const draw = () => {
+      context.fillStyle = "rgba(0, 0, 0, 0.05)";
+      context.fillRect(0, 0, canvasElement.width, canvasElement.height);
 
-    function draw() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#00ff41";
-      ctx.font = `${fontSize}px monospace`;
+      context.fillStyle = "#00ff41";
+      context.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const char = chars[Math.floor(Math.random() * chars.length)];
-        ctx.fillText(char, i * fontSize, drops[i] * fontSize);
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        context.fillText(char, i * fontSize, drops[i] * fontSize);
+
+        if (
+          drops[i] * fontSize > canvasElement.height &&
+          Math.random() > 0.975
+        ) {
           drops[i] = 0;
         }
+
         drops[i]++;
       }
-    }
+    };
 
-    const interval = setInterval(draw, 35);
+    const interval = window.setInterval(draw, 35);
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvasElement.width = window.innerWidth;
+      canvasElement.height = window.innerHeight;
     };
 
     window.addEventListener("resize", handleResize);
