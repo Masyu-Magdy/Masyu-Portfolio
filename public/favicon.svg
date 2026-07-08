@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="mask" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff41"/>
+      <stop offset="100%" style="stop-color:#ff00ff"/>
+    </linearGradient>
+    <filter id="maskGlow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <path d="M25 35 L30 25 L70 25 L75 35 L75 60 L65 75 L35 75 L25 60 Z" 
+        fill="none" stroke="url(#mask)" stroke-width="2"/>
+  
+  <ellipse cx="40" cy="45" rx="8" ry="12" fill="none" stroke="url(#mask)" stroke-width="1.5"/>
+  <ellipse cx="60" cy="45" rx="8" ry="12" fill="none" stroke="url(#mask)" stroke-width="1.5"/>
+  
+  <text x="40" y="49" font-family="'Courier New', monospace" font-size="6" fill="#00ff41" text-anchor="middle">01</text>
+  <text x="60" y="49" font-family="'Courier New', monospace" font-size="6" fill="#00ff41" text-anchor="middle">10</text>
+  
+  <path d="M40 62 Q50 70 60 62" fill="none" stroke="url(#mask)" stroke-width="1.5"/>
+  
+  <text x="50" y="35" font-family="'Orbitron', sans-serif" 
+        font-size="14" font-weight="900" fill="url(#mask)" 
+        text-anchor="middle" filter="url(#maskGlow)">
+    M
+  </text>
+</svg>
