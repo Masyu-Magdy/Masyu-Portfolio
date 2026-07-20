@@ -5,6 +5,15 @@ import { FiGithub, FiExternalLink, FiShield, FiCode, FiLock } from "react-icons/
 
 const projects = [
   {
+    title: "Movie",
+    description: "Movie Discovery Website (Frontend) (Next.js, TypeScript, TailwindCSS) — Responsive movie browsing app consuming the TMDB API, with Supabase-based authentication and watchlist.",
+    tech: ["React", "TypeScript", "React Query", "JWT", "REST API", "Encryption"],
+    github: "https://github.com/Masyu-Magdy/Movie",
+    live: "https://movie-masyu.vercel.app/",
+    icon: FiShield,
+    color: "#E3A857",
+  },
+  {
     title: "Fresh Cart",
     description: "Full-featured e-commerce web application with secure authentication, product management, and real-time cart updates.",
     tech: ["React", "TypeScript", "React Query", "JWT", "REST API", "Encryption"],
@@ -35,6 +44,7 @@ const projects = [
 
 const projectColors = {
   "Fresh Cart": "#00ff41",
+  "Movie": "#E3A857",
   "DevFolio": "#00d4ff",
   "Security Dashboard": "#ff00ff",
 };
